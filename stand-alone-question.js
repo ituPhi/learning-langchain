@@ -71,7 +71,7 @@ const chain = RunnableSequence.from([
 
 const response = await chain.invoke({
   question:
-    "La mente es una cosa curiosa, siempre buscando patrones, escaneando en busca de significado en las palabras frente a ella. Un lector avanza por el texto sin darse cuenta de cómo sus pensamientos están siendo guiados, sutilmente conducidos por un camino. Es fácil asumir que cada párrafo fluye lógicamente, que cada oración sigue naturalmente a la siguiente. Pero, ¿Como se llama el cliente que necesita rebranding y como se llama el cliente principal?."
+    "me dije el cliente que manana la llamara, a que hora o por que canal deberia comunicarme con ella."
 });
 
 //const testResponse = await retreiver.invoke('¿Qué cliente es el que necesita branding?');
