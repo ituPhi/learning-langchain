@@ -14,14 +14,18 @@ const model = new ChatOpenAI({
   temperature: 0,
 });
 
-const systemM = new SystemMessage("You must allways respond in spanish");
+async function rawMessages() {
+  const messages = [
+    new SystemMessage("You must allways respond in spanish"),
+    new HumanMessage(
+      "what day is today? reply with the day provided by the user",
+    ),
+    new HumanMessage(
+      new Date().toLocaleDateString("es-ES", { weekday: "long" }),
+    ),
+  ];
 
-const promptTemplate = ChatPromptTemplate.fromMessages([
-  systemM,
-  HumanMessagePromptTemplate.fromTemplate("{text} {day}"),
-]);
-const chain = await promptTemplate.pipe(model).invoke({
-  text: "what day is today? reply with the day provided by the user",
-  day: new Date().toLocaleDateString("es-ES", { weekday: "long" }),
-});
-console.log(chain);
+  const res = model.invoke(messages);
+  const response = await res;
+  console.log(response.content);
+}
